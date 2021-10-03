@@ -1,24 +1,26 @@
-import logo from './logo.svg';
 import './App.css';
+import LeftInfo from './components/LeftInfo.js';
+import Sidebar from './components/Sidebar';
+import { WeatherContext } from './context.js';
+
+// Parse time
+// fix real-time minutes
+// capitalize all words on city name
+// Parse from API
+// Font Awesome
+// Add Error and loading text
+// HIDE API KEY
+// Add social icons for my github & linkedin
+// Change background based on weather
+// Finish the weather-condition section
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className='container'>
+      <img src='./images/main-photo.jpeg' alt='' />
+      <LeftInfo />
+      <Sidebar />
+    </section>
   );
 }
 

@@ -1,38 +1,374 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+:root {
+  --sidebar-primary: #c0c0c0;
+  /* --background-img: url('https://images.pexels.com/photos/1631678/pexels-photo-1631678.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'); */
+  --background-img: url('./images/main-photo.jpeg');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background-img) no-repeat center center/cover;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+.py-1 {
+  padding: 10px 0;
+}
+.py-2 {
+  padding: 20px 0;
+}
+.py-3 {
+  padding: 30px 0;
+}
+.py-4 {
+  padding: 40px 0;
+}
+
+/* Start */
+
+.container {
+  position: relative;
+  height: 100vh;
+  margin: auto;
+  overflow: hidden;
+}
+
+/* Left Info */
+
+.left-info {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-bottom: 3rem;
+  margin-left: 3rem;
+  color: #fff;
+  text-shadow: 1px 1px 3px #999;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* 1 */
+.left-info h1 {
+  font-size: 6rem;
+  font-weight: 300;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* 2 */
+.left-info .location-info {
+  text-align: center;
+  padding: 0 10px;
+}
+
+.left-info .location-info h3 {
+  font-size: 2.7rem;
+  font-weight: 600;
+}
+
+.left-info .location-info p {
+  font-size: 1.3rem;
+}
+
+/* 3 */
+.left-info .weather-status {
+  text-align: center;
+  padding: 0 20px;
+  margin-top: 10px;
+}
+
+.left-info .weather-status .weather-icon {
+  font-size: 2.2rem;
+}
+
+.left-info .weather-status p {
+  font-size: 1.2rem;
+  margin-top: 4px;
+  padding: 3px 0;
+}
+
+/* Sidebar */
+
+/* Utilities */
+.sidebar .white {
+  color: #fff;
+}
+
+.sidebar .spacer {
+  width: 100%;
+  margin: 10px auto;
+  height: 0.1px;
+  background: var(--sidebar-primary);
+}
+
+.spacer:last-child {
+  margin-bottom: 20px;
+}
+
+/* Overlay */
+.sidebar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #1a1a1a;
+  width: 100%;
+  height: 100%;
+  opacity: 0.45;
+  z-index: -1;
+}
+
+.sidebar {
+  background-color: transparent;
+  width: 40vw;
+  height: 100vh;
+  max-width: 400px;
+  position: absolute;
+  right: 0;
+  backdrop-filter: blur(10px);
+  top: 0;
+  padding: 0 50px;
+  color: var(--sidebar-primary);
+}
+
+/* Sidebar Container For Width Responsiveness */
+.sidebar-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+/* Sidebar Form */
+
+.sidebar #sidebar-form {
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+
+/* Sidebar Form Input */
+.sidebar #sidebar-form input {
+  background: none;
+  color: var(--sidebar-primary);
+  border: none;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Changing Placeholder Color */
+.sidebar #sidebar-form input::placeholder {
+  color: var(--sidebar-primary);
+  opacity: 0.8;
+  font-size: 1rem;
+}
+
+/* Form Location Icon Button  */
+.sidebar #sidebar-form button {
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2rem;
+  background: none;
+  border: none;
+}
+
+/* Form Location Icon */
+.sidebar #sidebar-form .location-icon {
+  background: transparent;
+  border: none;
+  color: var(--sidebar-primary);
+  transition: color 0.5s;
+}
+
+.sidebar #sidebar-form .location-icon:hover {
+  color: #fff;
+}
+
+/* End of Sidebar Form */
+
+.sidebar h4 {
+  padding: 10px 0;
+}
+
+/* Sidebar Locations Buttons */
+
+.sidebar ul li .city {
+  background-color: transparent;
+  color: var(--sidebar-primary);
+  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  transition: color 0.5s;
+}
+
+.sidebar ul li button:hover {
+  color: #fff;
+}
+
+.sidebar .status-list .country {
+  margin-right: 9px;
+  color: skyblue;
+  padding: 3px;
+  border: 1px solid #fff;
+}
+
+/* Margin Fixings */
+.sidebar .status-list .humidity {
+  margin-right: 5px;
+}
+
+.sidebar .status-list .feels-like {
+  margin-right: 8px;
+}
+
+/* Sidebar Paragraphs */
+.sidebar ul li {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+}
+
+/* -- RESPONSIVENESS -- */
+
+/* Width Responsiveness */
+
+@media (max-width: 930px) {
+  .left-info {
+    margin-left: 1.5rem;
+    flex-direction: column;
+    height: 100vh;
+    width: 60vw;
+    /* justify-content: center; */
+    margin: auto;
   }
-  to {
-    transform: rotate(360deg);
+
+  .left-info h1 {
+    font-size: 5rem;
+  }
+}
+
+/* Phones */
+
+@media (max-width: 650px) {
+  body {
+    background: url('https://images.pexels.com/photos/1631678/pexels-photo-1631678.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260') no-repeat center
+      center/cover;
+  }
+  .left-info {
+    width: 100%;
+    position: absolute;
+    bottom: 5%;
+    text-shadow: 1px 1px 1px #888;
+  }
+
+  .left-info h1 {
+    font-size: 4rem;
+  }
+
+  .left-info .location-info {
+    padding: 20px;
+  }
+
+  .left-info .location-info h3 {
+    font-size: 2rem;
+  }
+
+  .left-info .location-info p {
+    font-size: 1.1rem;
+  }
+
+  .left-info p {
+    font-size: 0.8rem;
+  }
+
+  .sidebar .cities,
+  .sidebar .spacer,
+  .sidebar .weather-details,
+  .sidebar::before {
+    display: none;
+  }
+
+  .sidebar {
+    width: 100vw;
+    max-width: 650px;
+    backdrop-filter: blur(0px);
+  }
+
+  .sidebar .status-list {
+    margin-bottom: 3.5rem;
+    color: #fff;
+    padding: 0 15px;
+  }
+
+  .sidebar .status-list .country {
+    margin-right: 10px;
+    color: #fff;
+    border: 1px solid white;
+  }
+
+  .sidebar #sidebar-form {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 20px;
+    padding: 10px 15px;
+    margin-top: 5rem;
+    color: #fff;
+  }
+
+  .sidebar #sidebar-form input,
+  .sidebar #sidebar-form input::placeholder {
+    color: #fff;
+  }
+
+  .sidebar .status-list {
+    text-shadow: 1px 1px 5px #333;
+  }
+}
+
+/* Height Responsiveness */
+
+@media (max-height: 550px) {
+  .sidebar ul li {
+    padding: 5px 0;
+  }
+
+  .sidebar .spacer {
+    margin: 2px auto;
+  }
+
+  .sidebar .spacer:last-child {
+    margin-bottom: 10px;
+  }
+
+  .sidebar #sidebar-form {
+    margin-top: 8px;
+  }
+
+  .sidebar h4 {
+    padding: 4px 0;
+    margin: 0;
+  }
+}
+
+@media (min-height: 720px) {
+  #sidebar .sidebar-container h4 {
+    font-size: 4rem;
+  }
+
+  .sidebar .spacer {
+    /* width: 50%; */
+    height: 2px;
   }
 }
