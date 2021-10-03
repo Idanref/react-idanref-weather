@@ -3,7 +3,6 @@ import axios from 'axios';
 import mockCity from './mockCity';
 
 const rootUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
-const API_KEY = 'e6d0c589a6d3548a3fb6faf7de4cde56';
 // api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
 
 const WeatherContext = React.createContext();
@@ -33,7 +32,7 @@ const WeatherProvider = ({ children }) => {
   const [error, setError] = useState(false);
 
   const searchCity = async (city) => {
-    const response = await axios(`${rootUrl}${city}&units=metric&appid=${API_KEY}`).catch((err) => console.log(err));
+    const response = await axios(`${rootUrl}${city}&units=metric&appid=${process.env.REACT_APP_ACCESS_KEY}`).catch((err) => console.log(err));
 
     setIsLoading(true);
 
