@@ -1,26 +1,30 @@
 import './App.css';
+import Background from './components/Background';
 import LeftInfo from './components/LeftInfo.js';
 import Sidebar from './components/Sidebar';
 import { WeatherContext } from './context.js';
+import background from './images/main-clear.jpeg';
 
-// Parse time
-// fix real-time minutes
-// capitalize all words on city name
-// Parse from API
-// Font Awesome
-// Add Error and loading text
-// HIDE API KEY
-// Add social icons for my github & linkedin
 // Change background based on weather
-// Finish the weather-condition section
+// fix real-time minutes
+// Add Error and loading text
+// Add social icons for my github & linkedin
+// Add photos to github
 
 function App() {
+  // document.body.style = `background-image: url('./images/main-clear.jpeg') no-repeat center center/cover`;
+
+  // document.querySelector('body').style.background = `url(./main.jpeg) no-repeat center center/cover`;
+
   return (
-    <section className='container'>
-      <img src='./images/main-photo.jpeg' alt='' />
-      <LeftInfo />
-      <Sidebar />
-    </section>
+    <>
+      <section className='container'>
+        {/* <img src='./images/main-photo.jpeg' alt='' /> */}
+        <Background />
+        <LeftInfo />
+        <Sidebar />
+      </section>
+    </>
   );
 }
 

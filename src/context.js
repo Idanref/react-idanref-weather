@@ -8,7 +8,7 @@ const rootUrl = 'https://api.openweathermap.org/data/2.5/weather?q=';
 const WeatherContext = React.createContext();
 
 const WeatherProvider = ({ children }) => {
-  const [city, setCity] = useState('Tel-Aviv');
+  const [city, setCity] = useState('Tel Aviv');
   const [temperature, setTemperature] = useState(0);
   // Date
   const [dayOfWeek, setDayOfWeek] = useState('');
@@ -25,6 +25,7 @@ const WeatherProvider = ({ children }) => {
   const [humidity, setHumidity] = useState(62);
   const [wind, setWind] = useState(8);
   const [feelsLike, setFeelsLike] = useState(0);
+  const [weatherCondition, setWeatherCondition] = useState('');
   // City Info
   const [cityInfo, setCityInfo] = useState(mockCity);
   // Utilities
@@ -40,8 +41,8 @@ const WeatherProvider = ({ children }) => {
       // fix uppercase after ' ' / '-'
       setError(false);
       setIsLoading(false);
-      const newCity = city.charAt(0).toUpperCase() + city.slice(1);
-      setCity(newCity);
+      const capitalizedCity = capitalizeTheFirstLetterOfEachWord(city);
+      setCity(capitalizedCity);
       console.log(cityInfo);
       setTemperature(Math.round(response.data.main.temp));
       setCountry(response.data.sys.country);
@@ -49,6 +50,7 @@ const WeatherProvider = ({ children }) => {
       setWind(Math.round(response.data.wind.speed));
       setWind(Math.round(response.data.wind.speed));
       setFeelsLike(Math.round(response.data.main.feels_like));
+      setWeatherCondition(response.data.weather[0].main);
     } else {
       setError(true);
       console.log(error);
@@ -71,6 +73,14 @@ const WeatherProvider = ({ children }) => {
   // }
 
   // Utility Functions
+
+  function capitalizeTheFirstLetterOfEachWord(city) {
+    var separateWord = city.toLowerCase().split(' ');
+    for (var i = 0; i < separateWord.length; i++) {
+      separateWord[i] = separateWord[i].charAt(0).toUpperCase() + separateWord[i].substring(1);
+    }
+    return separateWord.join(' ');
+  }
 
   const getDayOfWeek = () => {
     const day = today.getDay();
@@ -107,7 +117,23 @@ const WeatherProvider = ({ children }) => {
 
   return (
     <WeatherContext.Provider
-      value={{ temperature, city, country, humidity, wind, feelsLike, hours, minutes, dayOfWeek, date, month, year, searchCity, cityInfo }}
+      value={{
+        temperature,
+        city,
+        country,
+        humidity,
+        wind,
+        feelsLike,
+        weatherCondition,
+        hours,
+        minutes,
+        dayOfWeek,
+        date,
+        month,
+        year,
+        searchCity,
+        cityInfo,
+      }}
     >
       {children}
     </WeatherContext.Provider>

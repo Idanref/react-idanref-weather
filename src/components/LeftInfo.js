@@ -2,10 +2,11 @@ import React, { useContext, useState } from 'react';
 import { WeatherContext } from '../context.js';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCloud } from '@fortawesome/free-solid-svg-icons';
+import { faCloud, faCloudShowersHeavy, faSun, faSmog } from '@fortawesome/free-solid-svg-icons';
 
 const LeftInfo = () => {
-  const { temperature, city, hours, minutes, dayOfWeek, date, month, year, cityInfo, isLoading, error } = React.useContext(WeatherContext);
+  const { temperature, city, weatherCondition, hours, minutes, dayOfWeek, date, month, year, cityInfo, isLoading, error } =
+    React.useContext(WeatherContext);
 
   if (isLoading) {
     return <h1>Loading..</h1>;
@@ -24,8 +25,18 @@ const LeftInfo = () => {
       </div>
       <div className='weather-status'>
         {/* <i className='fas fa-cloud-showers-heavy fa-2x'></i> */}
-        <FontAwesomeIcon icon={faCloud} className='weather-icon fa-2x' />
-        <p>Nice</p>
+        {/* <FontAwesomeIcon icon={faCloud} className='weather-icon fa-2x' /> */}
+        <React.Fragment>
+          {weatherCondition === 'Clouds' && <FontAwesomeIcon icon={faCloud} className='weather-icon fa-2x' />}
+
+          {weatherCondition === 'Rain' && <FontAwesomeIcon icon={faCloudShowersHeavy} className='weather-icon fa-2x' />}
+
+          {weatherCondition === 'Clear' && <FontAwesomeIcon icon={faSun} className='weather-icon fa-2x' />}
+
+          {weatherCondition === 'Mist' && <FontAwesomeIcon icon={faSmog} className='weather-icon fa-2x' />}
+          {/* Clouds, Rain, Clear, Mist */}
+        </React.Fragment>
+        <p>{weatherCondition}</p>
       </div>
     </div>
   );

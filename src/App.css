@@ -7,12 +7,21 @@
 :root {
   --sidebar-primary: #c0c0c0;
   /* --background-img: url('https://images.pexels.com/photos/1631678/pexels-photo-1631678.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260'); */
-  --background-img: url('./images/main-photo.jpeg');
+  /* --background-img: url('./images/main-photo.jpeg'); */
+}
+
+.main-background-clear {
+  background-image: url('./images/main-clear.jpeg') no-repeat center center/cover;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background: var(--background-img) no-repeat center center/cover;
+  /* background: var(--background-img) no-repeat center center/cover; */
+}
+
+.background {
+  height: 100%;
+  width: 100%;
 }
 
 a {
@@ -324,6 +333,10 @@ li {
     border-radius: 20px;
     padding: 10px 15px;
     margin-top: 5rem;
+    color: #fff;
+  }
+
+  .sidebar #sidebar-form .location-icon {
     color: #fff;
   }
 
