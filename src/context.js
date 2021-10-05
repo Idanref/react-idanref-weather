@@ -65,17 +65,6 @@ const WeatherProvider = ({ children }) => {
     }
   };
 
-  // To Fix On useEffect - Real-Time clock changing - This is maybe the code (works only when initial value is 0)
-  // while (true) {
-  //   const interval = setInterval(() => {
-  //     updateMinutes();
-  //   }, 1000);
-
-  //   return () => clearInterval(interval);
-  // }
-
-  // Utility Functions
-
   // Function to display capitalized city's name
   function capitalizeTheFirstLetterOfEachWord(city) {
     var separateWord = city.toLowerCase().split(' ');
