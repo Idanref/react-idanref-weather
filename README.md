@@ -1,6 +1,6 @@
 ## Live Site
 https://idanref-weather.netlify.app/
-<br><br>
+<br>
 
 ## Info
 
