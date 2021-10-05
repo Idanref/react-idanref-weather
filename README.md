@@ -1,6 +1,9 @@
 ## Live Site
 https://idanref-weather.netlify.app/
 <br><br>
+
+## Info
+
 My fully responsive weather web application built with React.js and CSS.
 Weather API used: https://openweathermap.org/current
 <br><br>
