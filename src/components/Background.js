@@ -10,21 +10,20 @@ const Background = () => {
 
   const documentBody = document.querySelector('body');
 
-  // <= 650 is phone width in css
-
+  // If: Width <= 650px is phone width in css
   if (window.innerWidth <= 650) {
     if (weatherCondition === 'Clear' || weatherCondition === 'Clouds') {
       documentBody.style.background = `url(${phoneWarm}) no-repeat center center/cover`;
-      console.log(window.innerWidth);
     }
 
     if (weatherCondition === 'Rain' || weatherCondition === 'Mist') {
       documentBody.style.background = `url(${phoneRainy}) no-repeat center center/cover`;
     }
-  } else {
+  }
+  // Else: Width >= 650px
+  else {
     if (weatherCondition === 'Clear' || weatherCondition === 'Clouds') {
       documentBody.style.background = `url(${mainClear}) no-repeat center center/cover`;
-      console.log(window.innerWidth);
     }
 
     if (weatherCondition === 'Rain' || weatherCondition === 'Mist') {
